@@ -15,7 +15,7 @@ public class Address {
 
     @Id
     @Column(name="addr_surr_key", columnDefinition="CHAR(32)")
-    public String addressId;
+    public String addressSurrKey;
 
     //Request payload needs to include an indictor for boolean 'permanent address'
 

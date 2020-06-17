@@ -1,45 +1,46 @@
-package org.reciprocity.aaservice.repository;//package org.mycovidresponse.cmservice.repository.entity;
-//
-//import javax.persistence.*;
-//import java.time.LocalDate;
-//
-//@Entity
-//@Table(name="organizations")
-//public class Organizations {
-//
-//    //After people
-//
-//    @Id
-//    @Column(name = "member_key", updatable = false, nullable = false)
-//    private Integer memberId;
-//
-//    @MapsId
-//    @OneToOne
-//    @JoinColumn(name = "member_key", referencedColumnName = "member_key")
-//    private Members members;
-//
-//    //Enum
-//    @Column(name="organization_type")
-//    private String organizationType;
-//
-//    @Column(name="organization_desc")
-//    private String organizationDesc;
-//
-//    @Id
-//    @Column(name = "primary_contact", updatable = false, nullable = false)
-//    private Integer primaryContact;
-//
-//    @MapsId
-//    @OneToOne
-//    @JoinColumn(name = "primary_contact", referencedColumnName = "member_key")
-//    private People peopleContact;
-//
-//    @Column(name="created_date")
-//    private LocalDate createdDate;
-//
-//    @Column(name="modified_date")
-//    private LocalDate modifiedDate;
-//}
+package org.reciprocity.aaservice.repository;
+
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.UUID;
+
+@Entity
+@Table(name="organizations")
+@Getter @Setter
+public class Organizations implements Serializable {
+
+    @Id
+    @Setter(AccessLevel.NONE)
+    @Column(name = "member_key", updatable = false, nullable = false)
+    private UUID memberId;
+
+    @MapsId
+    @OneToOne
+    @JoinColumn(name = "member_key", referencedColumnName = "member_key")
+    private Member member;
+
+    //Enum
+    @Column(name="organization_type")
+    private String organizationType;
+
+    @Column(name="organization_desc")
+    private String organizationDesc;
+
+    @Id
+    @Column(name = "primary_contact", updatable = false, nullable = false)
+    private UUID primaryContact;
+
+    @Column(name="created_date")
+    private LocalDate createdDate;
+
+    @Column(name="modified_date")
+    private LocalDate modifiedDate;
+}
 //
 ////    CREATE TABLE IF NOT EXISTS ods_owner.organizations
 ////        (

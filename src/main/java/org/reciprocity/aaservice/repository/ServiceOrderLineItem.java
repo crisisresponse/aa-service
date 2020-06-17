@@ -23,7 +23,7 @@ package org.reciprocity.aaservice.repository;//package org.mycovidresponse.cmser
 //    @MapsId
 //    @OneToOne
 //    @JoinColumn(name = "srvc_key", referencedColumnName = "srvc_key")
-//    private Services services;
+//    private AvailableService services;
 //
 //    @Column(name="srvc_quantity")
 //    private Integer quantity;

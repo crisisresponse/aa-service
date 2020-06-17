@@ -31,10 +31,12 @@ public class Member {
     public String email;
 
     @OneToOne
-    public Name nameId;
+    @JoinColumn(name = "nm_surr_key_fk", referencedColumnName = "nm_surr_key")
+    public Name Name;
 
     @OneToOne
-    public Address addressId;
+    @JoinColumn(name = "addr_surr_key_fk", referencedColumnName = "addr_surr_key")
+    public Address address;
 
     @Column(name="created_date")
     public LocalDate createdDate;

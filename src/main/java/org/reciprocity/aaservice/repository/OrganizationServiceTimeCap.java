@@ -18,7 +18,7 @@ package org.reciprocity.aaservice.repository;//package org.mycovidresponse.cmser
 //    //replace
 //    @ManyToOne
 //    @Column(name="srvc_key")
-//    private Services serviceKey;
+//    private AvailableService serviceKey;
 //
 //    @Id
 //    @Column(name = "organization_key", updatable = false, nullable = false)

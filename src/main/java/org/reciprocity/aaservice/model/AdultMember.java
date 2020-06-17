@@ -4,12 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-public class MemberDTO {
+public class AdultMember extends  AdditionalHouseMember {
 
-    private NameDTO name;
-    private AddressDTO address;
     private String email;
     private String phoneNumber;
-    //Enum
-    private String memberType;
 }
