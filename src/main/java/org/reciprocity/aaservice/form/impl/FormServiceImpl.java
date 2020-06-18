@@ -5,8 +5,8 @@ import org.reciprocity.aaservice.form.FormService;
 import org.reciprocity.aaservice.model.AdditionalHouseMember;
 import org.reciprocity.aaservice.model.AdultMember;
 import org.reciprocity.aaservice.model.HeadHhMember;
-import org.reciprocity.aaservice.repository.*;
 import org.reciprocity.aaservice.model.CommunityMemberRequest;
+import org.reciprocity.aaservice.repository.member.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

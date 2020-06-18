@@ -1,4 +1,4 @@
-package org.reciprocity.aaservice.repository;
+package org.reciprocity.aaservice.repository.member;
 
 import lombok.Getter;
 import lombok.Setter;

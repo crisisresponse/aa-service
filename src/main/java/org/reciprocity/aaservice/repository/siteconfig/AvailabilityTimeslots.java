@@ -1,10 +1,15 @@
-package org.reciprocity.aaservice.repository;
+package org.reciprocity.aaservice.repository.siteconfig;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.sql.Time;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 
 @Entity
 @Table(name="availability_timeslots")
+@Getter @Setter
 public class AvailabilityTimeslots {
 
     @GeneratedValue
@@ -16,7 +21,7 @@ public class AvailabilityTimeslots {
 
     //enum
     @Column(name="day_of_week")
-    private String dayOfTheWeek;
+    private DayOfWeek dayOfTheWeek;
 
     @Column (name="timeslot_start")
     private Time timeSlotStartTime;

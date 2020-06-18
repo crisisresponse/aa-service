@@ -1,4 +1,4 @@
-package org.reciprocity.aaservice.repository;
+package org.reciprocity.aaservice.repository.member;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -32,7 +32,7 @@ public class Member {
 
     @OneToOne
     @JoinColumn(name = "nm_surr_key_fk", referencedColumnName = "nm_surr_key")
-    public Name Name;
+    public org.reciprocity.aaservice.repository.member.Name Name;
 
     @OneToOne
     @JoinColumn(name = "addr_surr_key_fk", referencedColumnName = "addr_surr_key")

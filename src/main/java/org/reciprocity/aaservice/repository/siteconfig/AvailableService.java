@@ -1,9 +1,14 @@
-package org.reciprocity.aaservice.repository;
+package org.reciprocity.aaservice.repository.siteconfig;
+
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+@Table(name="services")
+@Getter @Setter
 public class AvailableService {
 
     @Id

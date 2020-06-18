@@ -4,10 +4,10 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 import org.reciprocity.aaservice.model.*;
-import org.reciprocity.aaservice.repository.Address;
-import org.reciprocity.aaservice.repository.Member;
-import org.reciprocity.aaservice.repository.Name;
-import org.reciprocity.aaservice.repository.People;
+import org.reciprocity.aaservice.repository.member.Address;
+import org.reciprocity.aaservice.repository.member.Member;
+import org.reciprocity.aaservice.repository.member.Name;
+import org.reciprocity.aaservice.repository.member.People;
 
 @Mapper
 public abstract class FormMapper {

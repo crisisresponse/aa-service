@@ -2,6 +2,7 @@ package org.reciprocity.aaservice.repository;
 
 import lombok.AccessLevel;
 import lombok.Setter;
+import org.reciprocity.aaservice.repository.member.People;
 
 import javax.persistence.*;
 import java.io.Serializable;

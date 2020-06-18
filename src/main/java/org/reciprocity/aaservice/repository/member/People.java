@@ -1,8 +1,9 @@
-package org.reciprocity.aaservice.repository;
+package org.reciprocity.aaservice.repository.member;
 
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import org.reciprocity.aaservice.repository.member.Member;
 import org.reciprocity.aaservice.util.StringListConverter;
 
 import javax.persistence.*;
