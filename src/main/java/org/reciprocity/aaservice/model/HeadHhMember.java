@@ -3,6 +3,7 @@ package org.reciprocity.aaservice.model;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter @Setter
@@ -15,5 +16,5 @@ public class HeadHhMember {
     //Enum
     private String memberType;
     private PersonalInfo personalInfo;
-    private List<AdditionalHouseMember> additionalHouseMembers;
+    private List<AdditionalHouseMember> additionalHouseMembers = new ArrayList<>();
 }

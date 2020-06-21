@@ -2,10 +2,7 @@ package org.reciprocity.aaservice.form.impl;
 
 import org.reciprocity.aaservice.form.FormMapper;
 import org.reciprocity.aaservice.form.FormService;
-import org.reciprocity.aaservice.model.AdditionalHouseMember;
-import org.reciprocity.aaservice.model.AdultMember;
-import org.reciprocity.aaservice.model.HeadHhMember;
-import org.reciprocity.aaservice.model.CommunityMemberRequest;
+import org.reciprocity.aaservice.model.*;
 import org.reciprocity.aaservice.repository.member.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,28 +47,32 @@ public class FormServiceImpl implements FormService {
         Member savedMember = memberRepository.save(member);
         People people = FormMapper.MAPPER.peopleDtoToEntity(headHhMember.getPersonalInfo(), savedMember);
         People savedPerson = peopleRepository.save(people);
-        if (headHhMember.getAdditionalHouseMembers().size() > 0) {
-            for (AdditionalHouseMember addMember : headHhMember.getAdditionalHouseMembers()) {
-                Name additionalName = FormMapper.MAPPER.nameToEntity(addMember.getAdditionalMemberName());
-                Optional nameAdditionalResult = namesRepository.findById(additionalName.getNamesId());
-                if (!nameAdditionalResult.isPresent()) {
-                    namesRepository.save(additionalName);
-                }
+        for (AdditionalHouseMember addMember : headHhMember.getAdditionalHouseMembers()) {
+            Name additionalName = FormMapper.MAPPER.nameToEntity(addMember.getAdditionalMemberName());
+            Optional nameAdditionalResult = namesRepository.findById(additionalName.getNamesId());
+            if (!nameAdditionalResult.isPresent()) {
+                namesRepository.save(additionalName);
+            }
 
-                if (addMember.getType().displayName.equalsIgnoreCase("child")) {
-                    //figure out mapping of child
-
-                } else {
-                    AdultMember adultMember = (AdultMember) addMember;
-                    Member additionalMemberEntity = memberRepository.save(FormMapper.MAPPER.additionalMemberToEntity(
-                            adultMember,
-                            additionalName,
-                            address));
-                    People additionalPerson = FormMapper.MAPPER.additionalPeopleToEntity(
-                            adultMember, additionalMemberEntity,
-                            savedPerson);
-                    peopleRepository.save(additionalPerson);
-                }
+            if (addMember.getType().displayName.equalsIgnoreCase("CHILD")) {
+                //figure out mapping of child
+                ChildMember childMember = (ChildMember) addMember;
+                Member additionalMemberEntity = memberRepository.save(FormMapper.MAPPER.additionalChildMemberToEntity(
+                        childMember,
+                        additionalName,
+                        address));
+                peopleRepository.save( FormMapper.MAPPER.additionalPeopleToEntity(
+                        childMember, additionalMemberEntity,
+                        savedPerson));
+            } else {
+                AdultMember adultMember = (AdultMember) addMember;
+                Member additionalMemberEntity = memberRepository.save(FormMapper.MAPPER.additionalMemberToEntity(
+                        adultMember,
+                        additionalName,
+                        address));
+                peopleRepository.save( FormMapper.MAPPER.additionalPeopleToEntity(
+                        adultMember, additionalMemberEntity,
+                        savedPerson));
             }
         }
 

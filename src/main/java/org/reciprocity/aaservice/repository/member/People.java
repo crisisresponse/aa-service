@@ -57,6 +57,11 @@ public class People {
 //    @ManyToOne
 //    private People aidAssistant;
 
+    @Column(columnDefinition="VARCHAR(4)")
+    private String grade;
+
+    private String school;
+
     private String qualifications;
 
     //may not get used

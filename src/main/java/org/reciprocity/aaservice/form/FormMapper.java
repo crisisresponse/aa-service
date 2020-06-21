@@ -74,16 +74,32 @@ public abstract class FormMapper {
         return memberEntity;
     }
 
-    public People additionalPeopleToEntity(AdultMember adultMember, Member memberEntity, People headHousehold) {
+    public People additionalPeopleToEntity(AdditionalHouseMember additionalMember, Member memberEntity, People headHousehold) {
         People peopleEntity = new People();
 
         peopleEntity.setMember(memberEntity);
         peopleEntity.setPrimaryContact(headHousehold.getMemberId());
-        peopleEntity.setBirthdate(adultMember.getBirthDate());
-        peopleEntity.setGender(adultMember.getGender());
+        peopleEntity.setBirthdate(additionalMember.getBirthDate());
+        peopleEntity.setGender(additionalMember.getGender());
         peopleEntity.setLanguageSpoken((List) new ArrayList<String>());
 
+        if(additionalMember.getType().displayName.equalsIgnoreCase("CHILD")) {
+            ChildMember childMember = (ChildMember) additionalMember;
+            peopleEntity.setGrade(childMember.getGrade());
+            peopleEntity.setSchool(childMember.getSchool());
+        }
+
+
         return peopleEntity;
+    }
+
+    public Member additionalChildMemberToEntity(ChildMember childMember, Name name, Address address) {
+        Member memberEntity = new Member();
+        memberEntity.setName(name);
+        memberEntity.setAddress(address);
+        memberEntity.setMemberType(childMember.getMemberType());
+
+        return memberEntity;
     }
 
     public abstract MemberName entityToName(Name name);
