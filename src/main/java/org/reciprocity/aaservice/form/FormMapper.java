@@ -9,6 +9,9 @@ import org.reciprocity.aaservice.repository.member.Member;
 import org.reciprocity.aaservice.repository.member.Name;
 import org.reciprocity.aaservice.repository.member.People;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Mapper
 public abstract class FormMapper {
 
@@ -55,6 +58,7 @@ public abstract class FormMapper {
         peopleEntity.setLanguageSpoken(personalInfo.getLanguageSpoken());
         peopleEntity.setQualifications(personalInfo.getQualifications());
         peopleEntity.setFieldOfWork(personalInfo.getFieldOfWork());
+        peopleEntity.setHouseholdSize(personalInfo.getHouseholdSize());
 
         return peopleEntity;
     }
@@ -65,6 +69,7 @@ public abstract class FormMapper {
         memberEntity.setAddress(address);
         memberEntity.setEmail(adultMember.getEmail());
         memberEntity.setPhoneNumber(adultMember.getPhoneNumber());
+        memberEntity.setMemberType(adultMember.getMemberType());
 
         return memberEntity;
     }
@@ -76,6 +81,7 @@ public abstract class FormMapper {
         peopleEntity.setPrimaryContact(headHousehold.getMemberId());
         peopleEntity.setBirthdate(adultMember.getBirthDate());
         peopleEntity.setGender(adultMember.getGender());
+        peopleEntity.setLanguageSpoken((List) new ArrayList<String>());
 
         return peopleEntity;
     }

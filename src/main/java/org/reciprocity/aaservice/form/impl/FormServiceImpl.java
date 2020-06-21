@@ -9,6 +9,7 @@ import org.reciprocity.aaservice.model.CommunityMemberRequest;
 import org.reciprocity.aaservice.repository.member.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -52,22 +53,24 @@ public class FormServiceImpl implements FormService {
         if (headHhMember.getAdditionalHouseMembers().size() > 0) {
             for (AdditionalHouseMember addMember : headHhMember.getAdditionalHouseMembers()) {
                 Name additionalName = FormMapper.MAPPER.nameToEntity(addMember.getAdditionalMemberName());
-                Optional nameAdditionalResult = namesRepository.findById(name.getNamesId());
+                Optional nameAdditionalResult = namesRepository.findById(additionalName.getNamesId());
                 if (!nameAdditionalResult.isPresent()) {
-                    namesRepository.save(name);
+                    namesRepository.save(additionalName);
                 }
 
                 if (addMember.getType().displayName.equalsIgnoreCase("child")) {
                     //figure out mapping of child
 
                 } else {
+                    AdultMember adultMember = (AdultMember) addMember;
                     Member additionalMemberEntity = memberRepository.save(FormMapper.MAPPER.additionalMemberToEntity(
-                            (AdultMember) addMember,
+                            adultMember,
                             additionalName,
                             address));
-                    peopleRepository.save(FormMapper.MAPPER.additionalPeopleToEntity(
-                            (AdultMember) addMember, additionalMemberEntity,
-                            savedPerson));
+                    People additionalPerson = FormMapper.MAPPER.additionalPeopleToEntity(
+                            adultMember, additionalMemberEntity,
+                            savedPerson);
+                    peopleRepository.save(additionalPerson);
                 }
             }
         }

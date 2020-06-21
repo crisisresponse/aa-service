@@ -32,7 +32,7 @@ public class Member {
 
     @OneToOne
     @JoinColumn(name = "nm_surr_key_fk", referencedColumnName = "nm_surr_key")
-    public org.reciprocity.aaservice.repository.member.Name Name;
+    public Name Name;
 
     @OneToOne
     @JoinColumn(name = "addr_surr_key_fk", referencedColumnName = "addr_surr_key")
