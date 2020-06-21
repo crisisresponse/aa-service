@@ -15,7 +15,7 @@ import java.time.LocalDate;
 })
 public class AdditionalHouseMember {
 
-    private HouseholdType type;
+    private AdditionalMemberType type;
     private MemberName additionalMemberName;
     private String memberType;
     private LocalDate birthDate;

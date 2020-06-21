@@ -50,8 +50,12 @@ public class People {
     private Integer householdSize;
 
 //    //If you are the primary contact than this column is null
-    @Column(name="hh_primary_contact")
-    private UUID primaryContact;
+//    @Column(name="hh_primary_contact", insertable = false, updatable = false)
+//    private UUID primaryContact;
+
+    @OneToOne
+    @JoinColumn(name = "hh_primary_contact", referencedColumnName = "member_key")
+    public People primaryContact;
 
 //    @Column(name="aid_assistant")
 //    @ManyToOne

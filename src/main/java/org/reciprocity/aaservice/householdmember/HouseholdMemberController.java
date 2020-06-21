@@ -1,11 +1,14 @@
 package org.reciprocity.aaservice.householdmember;
 
-import org.reciprocity.aaservice.model.AdditionalAdultHouseMemberRequest;
+import org.reciprocity.aaservice.model.AdditionalHouseMemberRequest;
+import org.reciprocity.aaservice.model.AdditionalHouseMemberResponse;
+import org.reciprocity.aaservice.repository.member.People;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.UUID;
 
 @RestController
 public class HouseholdMemberController {
@@ -16,9 +19,14 @@ public class HouseholdMemberController {
         this.householdMemberService = householdMemberService;
     }
 
+    @GetMapping(value="/householdmembers/{headHouseholdId}")
+    public ResponseEntity<List<People>> retrieveHouseMembers(@PathVariable UUID headHouseholdId) {
+        return new ResponseEntity<>(householdMemberService.getAllHouseholdMembers(headHouseholdId), HttpStatus.OK);
+    }
+
 
     @PostMapping(value="/householdmember")
-    public ResponseEntity<String> addAdditionalHouseholdMember(@RequestBody AdditionalAdultHouseMemberRequest request) {
+    public ResponseEntity<String> addAdditionalHouseholdMember(@RequestBody AdditionalHouseMemberRequest request) {
         householdMemberService.saveHouseholdMember(request);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

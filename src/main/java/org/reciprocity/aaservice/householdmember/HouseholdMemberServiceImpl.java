@@ -1,10 +1,12 @@
 package org.reciprocity.aaservice.householdmember;
 
 import org.reciprocity.aaservice.form.FormMapper;
-import org.reciprocity.aaservice.model.AdditionalAdultHouseMemberRequest;
+import org.reciprocity.aaservice.model.AdditionalHouseMemberRequest;
+import org.reciprocity.aaservice.model.AdditionalHouseMemberResponse;
 import org.reciprocity.aaservice.repository.member.*;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -22,9 +24,19 @@ public class HouseholdMemberServiceImpl implements HouseholdMemberService {
         this.peopleRepository = peopleRepository;
     }
 
+    @Override
+    public List<People> getAllHouseholdMembers(UUID headHouseholdId) {
+        Optional<People> headOfHousehold = peopleRepository.findById(headHouseholdId);
+
+        if (headOfHousehold.isPresent()) {
+            return peopleRepository.findAllByPrimaryContact(headOfHousehold.get());
+        }
+
+        throw new RuntimeException("UUID is not a validate head of household");
+    }
 
     @Override
-    public void saveHouseholdMember(AdditionalAdultHouseMemberRequest request) {
+    public void saveHouseholdMember(AdditionalHouseMemberRequest request) {
         UUID headOfHouseholdUUID = request.getHeadOfHouseId();
         Optional<Member> headOfHouseholdMember = memberRepository.findById(headOfHouseholdUUID);
         Optional<People> headOfHouseholdPerson = peopleRepository.findById(headOfHouseholdUUID);
@@ -33,7 +45,7 @@ public class HouseholdMemberServiceImpl implements HouseholdMemberService {
             throw new RuntimeException("Did not find head of household");
         }
 
-        Name name = FormMapper.MAPPER.nameToEntity(request.getAdditionalAdultMember().getAdditionalMemberName());
+        Name name = FormMapper.MAPPER.nameToEntity(request.getAdditionalHouseMember().getAdditionalMemberName());
 
         Optional<Name> additionalName = namesRepository.findById(name.getNamesId());
 
@@ -41,15 +53,16 @@ public class HouseholdMemberServiceImpl implements HouseholdMemberService {
             namesRepository.save(name);
         }
 
-        Member addHousehold = FormMapper.MAPPER.additionalMemberToEntity(request.getAdditionalAdultMember(),
-               name , headOfHouseholdMember.get().getAddress());
+        Member savedMember = memberRepository.save(
+                FormMapper.MAPPER.additionalMemberToEntity(
+                        request.getAdditionalHouseMember(),
+                        name,
+                        headOfHouseholdMember.get().getAddress()));
 
-        Member savedMember = memberRepository.save(addHousehold);
-
-        People personToAddToPeopleTable =
+        peopleRepository.save(
                 FormMapper.MAPPER.additionalPeopleToEntity(
-                        request.getAdditionalAdultMember(), savedMember, headOfHouseholdPerson.get());
-
-        peopleRepository.save(personToAddToPeopleTable);
+                        request.getAdditionalHouseMember(),
+                        savedMember,
+                        headOfHouseholdPerson.get()));
     }
 }

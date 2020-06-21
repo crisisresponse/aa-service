@@ -53,29 +53,13 @@ public class FormServiceImpl implements FormService {
             if (!nameAdditionalResult.isPresent()) {
                 namesRepository.save(additionalName);
             }
-
-            if (addMember.getType().displayName.equalsIgnoreCase("CHILD")) {
-                //figure out mapping of child
-                ChildMember childMember = (ChildMember) addMember;
-                Member additionalMemberEntity = memberRepository.save(FormMapper.MAPPER.additionalChildMemberToEntity(
-                        childMember,
-                        additionalName,
-                        address));
-                peopleRepository.save( FormMapper.MAPPER.additionalPeopleToEntity(
-                        childMember, additionalMemberEntity,
-                        savedPerson));
-            } else {
-                AdultMember adultMember = (AdultMember) addMember;
-                Member additionalMemberEntity = memberRepository.save(FormMapper.MAPPER.additionalMemberToEntity(
-                        adultMember,
-                        additionalName,
-                        address));
-                peopleRepository.save( FormMapper.MAPPER.additionalPeopleToEntity(
-                        adultMember, additionalMemberEntity,
-                        savedPerson));
-            }
+            Member additionalMemberEntity = memberRepository.save(FormMapper.MAPPER.additionalMemberToEntity(
+                    addMember,
+                    additionalName,
+                    address));
+            peopleRepository.save(FormMapper.MAPPER.additionalPeopleToEntity(
+                    addMember, additionalMemberEntity,
+                    savedPerson));
         }
-
     }
-
 }

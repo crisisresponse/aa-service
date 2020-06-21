@@ -63,13 +63,17 @@ public abstract class FormMapper {
         return peopleEntity;
     }
 
-    public Member additionalMemberToEntity(AdultMember adultMember, Name name, Address address) {
+    public Member additionalMemberToEntity(AdditionalHouseMember member, Name name, Address address) {
         Member memberEntity = new Member();
         memberEntity.setName(name);
         memberEntity.setAddress(address);
-        memberEntity.setEmail(adultMember.getEmail());
-        memberEntity.setPhoneNumber(adultMember.getPhoneNumber());
-        memberEntity.setMemberType(adultMember.getMemberType());
+        memberEntity.setMemberType(member.getMemberType());
+
+        if(member.getType().displayName.equalsIgnoreCase(AdditionalMemberType.ADULT.displayName)) {
+            AdultMember adultMember = (AdultMember) member;
+            memberEntity.setEmail(adultMember.getEmail());
+            memberEntity.setPhoneNumber(adultMember.getPhoneNumber());
+        }
 
         return memberEntity;
     }
@@ -78,12 +82,12 @@ public abstract class FormMapper {
         People peopleEntity = new People();
 
         peopleEntity.setMember(memberEntity);
-        peopleEntity.setPrimaryContact(headHousehold.getMemberId());
+        peopleEntity.setPrimaryContact(headHousehold);
         peopleEntity.setBirthdate(additionalMember.getBirthDate());
         peopleEntity.setGender(additionalMember.getGender());
         peopleEntity.setLanguageSpoken((List) new ArrayList<String>());
 
-        if(additionalMember.getType().displayName.equalsIgnoreCase("CHILD")) {
+        if(additionalMember.getType().displayName.equalsIgnoreCase(AdditionalMemberType.CHILD.displayName)) {
             ChildMember childMember = (ChildMember) additionalMember;
             peopleEntity.setGrade(childMember.getGrade());
             peopleEntity.setSchool(childMember.getSchool());
@@ -119,6 +123,4 @@ public abstract class FormMapper {
         str.append(headHhAddress.getZipCode());
         return DigestUtils.md5Hex(str.toString());
     }
-
-
 }

@@ -10,8 +10,8 @@ import java.util.Date;
 import java.util.UUID;
 
 @Getter @Setter
-public class AdditionalAdultHouseMemberRequest {
+public class AdditionalHouseMemberRequest {
 
     private UUID headOfHouseId;
-    private AdultMember additionalAdultMember;
+    private AdditionalHouseMember additionalHouseMember;
 }
