@@ -37,7 +37,7 @@ public class ProvidedServicesMapperTest {
         AvailableService availableService = new AvailableService();
         availableService.setName("test-name");
         availableService.setDescription("test");
-        availableService.setServiceId(1L);
+        availableService.setServiceKey(1L);
         availableService.setCategory("WH");
         ProvidedService actual = mapper.availServiceMapToReturnProvidedService(availableService);
 

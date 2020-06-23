@@ -12,4 +12,5 @@ public interface HouseholdMemberService {
 
     List<People> getAllHouseholdMembers(UUID headHouseholdId);
     void saveHouseholdMember(AdditionalHouseMemberRequest request);
+    void updateHouseholdMember(UUID memberId, AdditionalHouseMemberRequest request);
 }

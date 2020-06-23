@@ -30,4 +30,11 @@ public class HouseholdMemberController {
         householdMemberService.saveHouseholdMember(request);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
+    @PutMapping(value="/householdmember/{memberId}")
+    public ResponseEntity<String> updateHouseholdMember(@PathVariable UUID memberId,
+                                                        @RequestBody AdditionalHouseMemberRequest request) {
+        householdMemberService.updateHouseholdMember(memberId, request);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

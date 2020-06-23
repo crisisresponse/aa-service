@@ -53,19 +53,23 @@ public class People {
 //    @Column(name="hh_primary_contact", insertable = false, updatable = false)
 //    private UUID primaryContact;
 
+    //@Column(name="hh_role")
+    //private String householdRole;
+
     @OneToOne
     @JoinColumn(name = "hh_primary_contact", referencedColumnName = "member_key")
     public People primaryContact;
 
-//    @Column(name="aid_assistant")
-//    @ManyToOne
-//    private People aidAssistant;
+    @OneToOne
+    @JoinColumn(name="aid_assistant", referencedColumnName = "member_key")
+    private Member aidAssistant;
 
     @Column(columnDefinition="VARCHAR(4)")
     private String grade;
 
     private String school;
 
+    //This is only for volunteers
     private String qualifications;
 
     //may not get used

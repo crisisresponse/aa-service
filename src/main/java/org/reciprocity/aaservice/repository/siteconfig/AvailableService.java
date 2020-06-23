@@ -13,7 +13,8 @@ public class AvailableService {
 
     @Id
     @GeneratedValue
-    private Long serviceId;
+    @Column(name="srvc_key")
+    private Long serviceKey;
 
     @Column(name="srvc_nm")
     private String name;

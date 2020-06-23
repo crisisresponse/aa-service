@@ -14,7 +14,8 @@ public class AvailabilityTimeslots {
 
     @GeneratedValue
     @Id
-    private Integer timeslotId;
+    @Column(name="timeslot_key")
+    private Integer timeslotKey;
 
     @Column(name="timeslot_type")
     private String timeslotType;

@@ -9,7 +9,7 @@ import java.util.List;
 @Getter @Setter
 public class PersonalInfo {
 
-    private LocalDate birthdate;
+    private LocalDate birthDate;
 
     //enum
     private String gender;

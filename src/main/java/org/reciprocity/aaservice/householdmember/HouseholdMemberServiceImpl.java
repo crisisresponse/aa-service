@@ -2,7 +2,6 @@ package org.reciprocity.aaservice.householdmember;
 
 import org.reciprocity.aaservice.form.FormMapper;
 import org.reciprocity.aaservice.model.AdditionalHouseMemberRequest;
-import org.reciprocity.aaservice.model.AdditionalHouseMemberResponse;
 import org.reciprocity.aaservice.repository.member.*;
 import org.springframework.stereotype.Service;
 
@@ -65,4 +64,10 @@ public class HouseholdMemberServiceImpl implements HouseholdMemberService {
                         savedMember,
                         headOfHouseholdPerson.get()));
     }
+
+    @Override
+    public void updateHouseholdMember(UUID memberId, AdditionalHouseMemberRequest request) {
+
+    }
+
 }

@@ -14,7 +14,7 @@ public abstract class ProvidedServicesMapper {
         AvailableService availableService = new AvailableService();
 
         if(providedService.getId() > 0) {
-            availableService.setServiceId(providedService.getId());
+            availableService.setServiceKey(providedService.getId());
         }
         availableService.setCategory(providedService.getCategory());
         availableService.setDescription(providedService.getDescription());

@@ -51,7 +51,7 @@ public abstract class FormMapper {
         People peopleEntity = new People();
         peopleEntity.setMember(member);
 
-        peopleEntity.setBirthdate(personalInfo.getBirthdate());
+        peopleEntity.setBirthdate(personalInfo.getBirthDate());
         peopleEntity.setGender(personalInfo.getGender());
         peopleEntity.setEmploymentStatus(personalInfo.getEmploymentStatus());
         peopleEntity.setTransportAvail(personalInfo.getTransportAvailability());

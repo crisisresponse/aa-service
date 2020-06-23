@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import org.reciprocity.aaservice.repository.member.Member;
+import org.reciprocity.aaservice.repository.member.People;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -32,9 +33,9 @@ public class Organizations implements Serializable {
     @Column(name="organization_desc")
     private String organizationDesc;
 
-    @Id
-    @Column(name = "primary_contact", updatable = false, nullable = false)
-    private UUID primaryContact;
+    @OneToOne
+    @JoinColumn(name="primary_contact", referencedColumnName = "member_key")
+    private People primaryContact;
 
     @Column(name="created_date")
     private LocalDate createdDate;
