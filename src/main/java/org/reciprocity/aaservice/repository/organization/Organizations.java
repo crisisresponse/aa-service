@@ -1,4 +1,4 @@
-package org.reciprocity.aaservice.repository;
+package org.reciprocity.aaservice.repository.organization;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -19,7 +19,7 @@ public class Organizations implements Serializable {
     @Id
     @Setter(AccessLevel.NONE)
     @Column(name = "member_key", updatable = false, nullable = false)
-    private UUID memberId;
+    private UUID memberKey;
 
     @MapsId
     @OneToOne

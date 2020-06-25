@@ -1,9 +1,10 @@
-package org.reciprocity.aaservice.repository;
+package org.reciprocity.aaservice.repository.orders;
 
 import lombok.Getter;
 import lombok.Setter;
 import org.reciprocity.aaservice.repository.member.Member;
 import org.reciprocity.aaservice.repository.member.People;
+import org.reciprocity.aaservice.repository.organization.OrganizationServiceTimeCap;
 
 import javax.persistence.*;
 import java.time.LocalDate;

@@ -1,4 +1,4 @@
-package org.reciprocity.aaservice.repository;
+package org.reciprocity.aaservice.repository.orders;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -36,21 +36,3 @@ public class ServiceOrderLineItem {
     @Column(name="modified_date")
     private LocalDate modifiedDate;
 }
-
-//    CREATE TABLE IF NOT EXISTS ods_owner.srvc_orders_line_item
-//        (
-//        srvc_order_key integer NOT NULL,
-//        srvc_key integer NOT NULL,
-//        srvc_quantity integer NOT NULL,
-//        created_date timestamp without time zone NOT NULL DEFAULT NOW(),
-//        modified_date timestamp without time zone NOT NULL DEFAULT NOW(),
-//        PRIMARY KEY(srvc_order_key, srvc_key),
-//
-//        CONSTRAINT srvc_order_key_fk
-//        FOREIGN KEY (srvc_order_key)
-//        REFERENCES ods_owner.srvc_orders(srvc_order_key) ON DELETE SET NULL ON UPDATE CASCADE,
-//
-//        CONSTRAINT srvc_key_fk
-//        FOREIGN KEY (srvc_key)
-//        REFERENCES ods_owner.services(srvc_key) ON DELETE SET NULL ON UPDATE CASCADE
-//        );
