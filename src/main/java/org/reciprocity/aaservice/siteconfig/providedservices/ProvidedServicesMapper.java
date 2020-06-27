@@ -13,7 +13,7 @@ public abstract class ProvidedServicesMapper {
     public AvailableService providedServicesMapToEntity(ProvidedService providedService) {
         AvailableService availableService = new AvailableService();
 
-        if(providedService.getId() > 0) {
+        if(providedService.getId() != null) {
             availableService.setServiceKey(providedService.getId());
         }
         availableService.setCategory(providedService.getCategory());

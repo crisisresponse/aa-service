@@ -11,7 +11,6 @@
     <groupId>org.reciprocity</groupId>
     <artifactId>aa-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <memberName>aa-service</memberName>
     <description>Aid Assistant Service</description>
 
     <properties>
