@@ -3,10 +3,9 @@ package org.reciprocity.aaservice.form.impl;
 import org.reciprocity.aaservice.form.FormMapper;
 import org.reciprocity.aaservice.form.FormService;
 import org.reciprocity.aaservice.model.*;
-import org.reciprocity.aaservice.repository.member.*;
+import org.reciprocity.aaservice.repository.householdmember.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 

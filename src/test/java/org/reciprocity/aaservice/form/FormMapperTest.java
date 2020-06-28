@@ -2,7 +2,7 @@ package org.reciprocity.aaservice.form;
 
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
-import org.reciprocity.aaservice.repository.member.Name;
+import org.reciprocity.aaservice.repository.householdmember.Name;
 import org.reciprocity.aaservice.model.MemberName;
 
 import org.apache.commons.codec.digest.DigestUtils;

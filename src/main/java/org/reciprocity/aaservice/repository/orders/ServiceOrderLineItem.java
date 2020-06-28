@@ -3,7 +3,7 @@ package org.reciprocity.aaservice.repository.orders;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
-import org.reciprocity.aaservice.repository.siteconfig.AvailableService;
+import org.reciprocity.aaservice.repository.siteconfig.ServiceEntity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -25,7 +25,7 @@ public class ServiceOrderLineItem {
 
     @OneToOne
     @JoinColumn(name = "srvc_key", referencedColumnName = "srvc_key")
-    private AvailableService services;
+    private ServiceEntity services;
 
     @Column(name="srvc_quantity")
     private Integer quantity;

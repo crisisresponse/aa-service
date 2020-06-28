@@ -1,8 +1,8 @@
-package org.reciprocity.aaservice.siteconfig.providedservices;
+package org.reciprocity.aaservice.siteconfig.providedservice;
 
 import org.reciprocity.aaservice.model.ProvidedService;
 import org.reciprocity.aaservice.model.ProvidedServiceRequest;
-import org.reciprocity.aaservice.repository.siteconfig.AvailableService;
+import org.reciprocity.aaservice.repository.siteconfig.ServiceEntity;
 import org.reciprocity.aaservice.repository.siteconfig.ServiceConfigRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import static org.reciprocity.aaservice.siteconfig.providedservices.ProvidedServicesMapper.SITE_CONFIG_MAPPER;
+import static org.reciprocity.aaservice.siteconfig.providedservice.ProvidedServicesMapper.SITE_CONFIG_MAPPER;
 
 @Service
 public class ProvidedServicesServiceImpl implements ProvidedServicesService {
@@ -26,7 +26,7 @@ public class ProvidedServicesServiceImpl implements ProvidedServicesService {
 
     @Override
     public List<ProvidedService> retrieveAllProvidedServices() {
-        List<AvailableService> results =  serviceConfigRepository.findAll();
+        List<ServiceEntity> results =  serviceConfigRepository.findAll();
         return results.stream()
                 .map(availableService ->
                         SITE_CONFIG_MAPPER.availServiceMapToReturnProvidedService(availableService))
@@ -35,7 +35,7 @@ public class ProvidedServicesServiceImpl implements ProvidedServicesService {
 
     @Override
     public ProvidedService retrieveProvidedService(Long id) {
-        Optional<AvailableService> result =  serviceConfigRepository.findById(id);
+        Optional<ServiceEntity> result =  serviceConfigRepository.findById(id);
         if(result.isPresent()) {
            return SITE_CONFIG_MAPPER.availServiceMapToReturnProvidedService(result.get());
         }
@@ -44,7 +44,7 @@ public class ProvidedServicesServiceImpl implements ProvidedServicesService {
 
     @Override
     public void saveNewProvidedService(ProvidedServiceRequest request) {
-        List<AvailableService> serviceEntities = request.getProvidedService()
+        List<ServiceEntity> serviceEntities = request.getProvidedService()
                 .stream()
                 .map(SITE_CONFIG_MAPPER::providedServicesMapToEntity)
                 .collect(Collectors.toList());
@@ -54,7 +54,7 @@ public class ProvidedServicesServiceImpl implements ProvidedServicesService {
 
     @Override
     public void updateProvidedService(ProvidedServiceRequest request) {
-        List<AvailableService> serviceEntities = request.getProvidedService()
+        List<ServiceEntity> serviceEntities = request.getProvidedService()
                 .stream()
                 .map(SITE_CONFIG_MAPPER::providedServicesMapToEntity)
                 .collect(Collectors.toList());

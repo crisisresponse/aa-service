@@ -3,8 +3,8 @@ package org.reciprocity.aaservice.siteconfig;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 import org.reciprocity.aaservice.model.ProvidedService;
-import org.reciprocity.aaservice.repository.siteconfig.AvailableService;
-import org.reciprocity.aaservice.siteconfig.providedservices.ProvidedServicesMapper;
+import org.reciprocity.aaservice.repository.siteconfig.ServiceEntity;
+import org.reciprocity.aaservice.siteconfig.providedservice.ProvidedServicesMapper;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -20,26 +20,26 @@ public class ProvidedServicesMapperTest {
         providedService.setCategory("WH");
         providedService.setDescription("test");
         providedService.setName("test-name");
-        AvailableService availableService = mapper.providedServicesMapToEntity(providedService);
+        ServiceEntity serviceEntity = mapper.providedServicesMapToEntity(providedService);
 
-        AvailableService expected = new AvailableService();
+        ServiceEntity expected = new ServiceEntity();
         expected.setCategory("WH");
         expected.setDescription("test");
         expected.setName("test-name");
 
-        assertEquals(expected.getCategory(), availableService.getCategory());
-        assertEquals(expected.getDescription(), availableService.getDescription());
-        assertEquals(expected.getName(), availableService.getName());
+        assertEquals(expected.getCategory(), serviceEntity.getCategory());
+        assertEquals(expected.getDescription(), serviceEntity.getDescription());
+        assertEquals(expected.getName(), serviceEntity.getName());
     }
 
     @Test
     public void testAvailServiceMapToReturnProvidedService() {
-        AvailableService availableService = new AvailableService();
-        availableService.setName("test-name");
-        availableService.setDescription("test");
-        availableService.setServiceKey(1L);
-        availableService.setCategory("WH");
-        ProvidedService actual = mapper.availServiceMapToReturnProvidedService(availableService);
+        ServiceEntity serviceEntity = new ServiceEntity();
+        serviceEntity.setName("test-name");
+        serviceEntity.setDescription("test");
+        serviceEntity.setServiceKey(1L);
+        serviceEntity.setCategory("WH");
+        ProvidedService actual = mapper.availServiceMapToReturnProvidedService(serviceEntity);
 
 
         ProvidedService expected = new ProvidedService();

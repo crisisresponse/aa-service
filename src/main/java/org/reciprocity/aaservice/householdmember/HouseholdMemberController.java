@@ -1,8 +1,7 @@
 package org.reciprocity.aaservice.householdmember;
 
 import org.reciprocity.aaservice.model.AdditionalHouseMemberRequest;
-import org.reciprocity.aaservice.model.AdditionalHouseMemberResponse;
-import org.reciprocity.aaservice.repository.member.People;
+import org.reciprocity.aaservice.repository.householdmember.People;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

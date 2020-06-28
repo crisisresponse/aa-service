@@ -4,10 +4,10 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 import org.reciprocity.aaservice.model.*;
-import org.reciprocity.aaservice.repository.member.Address;
-import org.reciprocity.aaservice.repository.member.Member;
-import org.reciprocity.aaservice.repository.member.Name;
-import org.reciprocity.aaservice.repository.member.People;
+import org.reciprocity.aaservice.repository.householdmember.Address;
+import org.reciprocity.aaservice.repository.householdmember.Member;
+import org.reciprocity.aaservice.repository.householdmember.Name;
+import org.reciprocity.aaservice.repository.householdmember.People;
 
 import java.util.ArrayList;
 import java.util.List;

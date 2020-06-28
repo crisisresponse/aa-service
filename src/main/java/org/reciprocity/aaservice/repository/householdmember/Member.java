@@ -1,4 +1,4 @@
-package org.reciprocity.aaservice.repository.member;
+package org.reciprocity.aaservice.repository.householdmember;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;

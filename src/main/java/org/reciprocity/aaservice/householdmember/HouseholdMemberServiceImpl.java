@@ -2,7 +2,7 @@ package org.reciprocity.aaservice.householdmember;
 
 import org.reciprocity.aaservice.form.FormMapper;
 import org.reciprocity.aaservice.model.AdditionalHouseMemberRequest;
-import org.reciprocity.aaservice.repository.member.*;
+import org.reciprocity.aaservice.repository.householdmember.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

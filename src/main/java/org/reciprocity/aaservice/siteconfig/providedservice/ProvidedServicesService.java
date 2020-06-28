@@ -1,4 +1,4 @@
-package org.reciprocity.aaservice.siteconfig.providedservices;
+package org.reciprocity.aaservice.siteconfig.providedservice;
 
 import org.reciprocity.aaservice.model.ProvidedService;
 import org.reciprocity.aaservice.model.ProvidedServiceRequest;

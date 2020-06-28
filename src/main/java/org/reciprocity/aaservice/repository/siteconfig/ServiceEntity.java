@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name="services")
 @Getter @Setter
-public class AvailableService {
+public class ServiceEntity {
 
     @Id
     @GeneratedValue

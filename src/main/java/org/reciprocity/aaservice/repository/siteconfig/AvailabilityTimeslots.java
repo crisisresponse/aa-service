@@ -17,9 +17,6 @@ public class AvailabilityTimeslots {
     @Column(name="timeslot_key")
     private Long timeslotKey;
 
-    @Column(name="timeslot_type")
-    private String timeslotType;
-
     //enum
     @Column(name="day_of_week")
     private DayOfWeek dayOfTheWeek;

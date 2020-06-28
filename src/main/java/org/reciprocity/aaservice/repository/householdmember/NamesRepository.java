@@ -1,4 +1,4 @@
-package org.reciprocity.aaservice.repository.member;
+package org.reciprocity.aaservice.repository.householdmember;
 
 import org.springframework.data.repository.CrudRepository;
 
