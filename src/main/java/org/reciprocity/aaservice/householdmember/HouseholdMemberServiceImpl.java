@@ -31,7 +31,7 @@ public class HouseholdMemberServiceImpl implements HouseholdMemberService {
             return peopleRepository.findAllByPrimaryContact(headOfHousehold.get());
         }
 
-        throw new RuntimeException("UUID is not a validate head of household");
+        throw new RuntimeException("UUID is not a valid head of household");
     }
 
     @Override
