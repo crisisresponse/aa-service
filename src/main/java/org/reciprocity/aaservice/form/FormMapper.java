@@ -43,7 +43,7 @@ public abstract class FormMapper {
         memberEntity.setAddress(address);
         memberEntity.setEmail(headHhMember.getEmail());
         memberEntity.setMemberType(headHhMember.getMemberType());
-        memberEntity.setPhoneNumber(headHhMember.getPhoneNumber());
+        memberEntity.setHomePhoneNumber(headHhMember.getPhoneNumber());
         return memberEntity;
     }
 
@@ -57,7 +57,6 @@ public abstract class FormMapper {
         peopleEntity.setTransportAvail(personalInfo.getTransportAvailability());
         peopleEntity.setLanguageSpoken(personalInfo.getLanguageSpoken());
         peopleEntity.setQualifications(personalInfo.getQualifications());
-        peopleEntity.setFieldOfWork(personalInfo.getFieldOfWork());
         peopleEntity.setHouseholdSize(personalInfo.getHouseholdSize());
 
         return peopleEntity;
@@ -72,7 +71,7 @@ public abstract class FormMapper {
         if(member.getType().displayName.equalsIgnoreCase(AdditionalMemberType.ADULT.displayName)) {
             AdultMember adultMember = (AdultMember) member;
             memberEntity.setEmail(adultMember.getEmail());
-            memberEntity.setPhoneNumber(adultMember.getPhoneNumber());
+            memberEntity.setHomePhoneNumber(adultMember.getPhoneNumber());
         }
 
         return memberEntity;

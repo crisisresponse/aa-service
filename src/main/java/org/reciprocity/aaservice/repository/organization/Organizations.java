@@ -43,22 +43,3 @@ public class Organizations implements Serializable {
     @Column(name="modified_date")
     private LocalDate modifiedDate;
 }
-//
-////    CREATE TABLE IF NOT EXISTS ods_owner.organizations
-////        (
-////        member_key integer,
-////        organization_type text CHECK (organization_type in ('NETWORK PARTNER', 'WAREHOUSE')),
-////        organization_desc text NOT NULL,
-////        primary_contact integer NOT NULL,
-////        created_date timestamp without time zone NOT NULL DEFAULT NOW(),
-////        modified_date timestamp without time zone NOT NULL DEFAULT NOW(),
-////        PRIMARY KEY (member_key),
-////
-////        CONSTRAINT member_key_fk
-////        FOREIGN KEY (member_key)
-////        REFERENCES ods_owner.members(member_key) ON DELETE SET NULL ON UPDATE CASCADE,
-////
-////        CONSTRAINT contact_person_fk
-////        FOREIGN KEY (primary_contact)
-////        REFERENCES ods_owner.people(member_key) ON DELETE SET NULL ON UPDATE CASCADE
-////        );

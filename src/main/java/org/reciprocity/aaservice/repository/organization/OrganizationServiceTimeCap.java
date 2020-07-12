@@ -1,7 +1,7 @@
 package org.reciprocity.aaservice.repository.organization;
 
 import org.reciprocity.aaservice.repository.siteconfig.AvailabilityTimeslots;
-import org.reciprocity.aaservice.repository.siteconfig.ServiceEntity;
+import org.reciprocity.aaservice.repository.siteconfig.Services;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -21,7 +21,7 @@ public class OrganizationServiceTimeCap {
     //replace
     @OneToOne
     @JoinColumn(name="srvc_key", referencedColumnName = "srvc_key")
-    private ServiceEntity serviceKey;
+    private Services serviceKey;
 
     @OneToOne
     @JoinColumn(name = "organization_key", referencedColumnName = "member_key")

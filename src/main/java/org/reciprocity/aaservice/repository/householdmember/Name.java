@@ -13,7 +13,7 @@ import java.time.LocalDate;
 public class Name implements Serializable {
 
     @Id
-    @Column(name = "nm_surr_key", columnDefinition="CHAR(32)")
+    @Column(name = "nm_surr_key", columnDefinition="VARCHAR(32)")
     public String namesId;
 
     @Column(name = "first_nm")

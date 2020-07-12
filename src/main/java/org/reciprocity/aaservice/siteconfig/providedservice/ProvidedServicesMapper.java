@@ -3,24 +3,24 @@ package org.reciprocity.aaservice.siteconfig.providedservice;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 import org.reciprocity.aaservice.model.ProvidedService;
-import org.reciprocity.aaservice.repository.siteconfig.ServiceEntity;
+import org.reciprocity.aaservice.repository.siteconfig.Services;
 
 @Mapper
 public abstract class ProvidedServicesMapper {
 
     public static ProvidedServicesMapper SITE_CONFIG_MAPPER = Mappers.getMapper(ProvidedServicesMapper.class);
 
-    public ServiceEntity providedServicesMapToEntity(ProvidedService providedService) {
-        ServiceEntity serviceEntity = new ServiceEntity();
+    public Services providedServicesMapToEntity(ProvidedService providedService) {
+        Services services = new Services();
 
         if(providedService.getId() != null) {
-            serviceEntity.setServiceKey(providedService.getId());
+            services.setServiceKey(providedService.getId());
         }
-        serviceEntity.setCategory(providedService.getCategory());
-        serviceEntity.setDescription(providedService.getDescription());
-        serviceEntity.setName(providedService.getName());
+        services.setCategory(providedService.getCategory());
+        services.setDescription(providedService.getDescription());
+        services.setName(providedService.getName());
 
-        return serviceEntity;
+        return services;
     };
-    public abstract ProvidedService availServiceMapToReturnProvidedService(ServiceEntity service);
+    public abstract ProvidedService availServiceMapToReturnProvidedService(Services service);
 }

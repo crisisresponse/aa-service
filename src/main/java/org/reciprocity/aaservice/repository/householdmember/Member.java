@@ -16,16 +16,21 @@ public class Member {
 
     @Id
     @GeneratedValue
-    @Setter(AccessLevel.NONE)
     @Column(name="member_key")
-    public UUID memberId;
+    public UUID memberKey;
 
     @Column(name="member_type", nullable = false)
     public String memberType;
 
     //Clean up phone number to be 9 digits only (frontend)
-    @Column(name="phone_nbr")
-    public String phoneNumber;
+    @Column(name="cell_phone_nbr")
+    public String cellPhoneNumber;
+
+    @Column(name="home_phone_nbr")
+    public String homePhoneNumber;
+
+    @Column(name="other_phone_nbr")
+    public String otherPhoneNumber;
 
     @Email
     public String email;
@@ -38,6 +43,16 @@ public class Member {
     @JoinColumn(name = "addr_surr_key_fk", referencedColumnName = "addr_surr_key")
     public Address address;
 
+    @OneToOne
+    @JoinColumn(name = "scnd_addr_surr_key", referencedColumnName = "addr_surr_key")
+    public Address secondAddress;
+
+    @Column(name="start_efctv_date")
+    public LocalDate startEffectiveDate;
+
+    @Column(name="end_efctv_date")
+    public LocalDate endEffectiveDate;
+
     @Column(name="created_date")
     public LocalDate createdDate;
 
@@ -45,22 +60,3 @@ public class Member {
     public LocalDate modifiedDate;
 
 }
-
-//    CREATE TABLE IF NOT EXISTS ods_owner.members
-//        (
-//        member_key integer UNIQUE,
-//        member_type text CHECK (member_type IN ('PER', 'ORG', 'WH')),
-//        nm_surr_key integer NOT NULL,
-//        addr_surr_key integer NOT NULL,
-//        created_date timestamp without time zone NOT NULL DEFAULT NOW(),
-//        modified_date timestamp without time zone NOT NULL DEFAULT NOW(),
-//        PRIMARY KEY (member_key),
-//
-//        CONSTRAINT nm_surr_key_fk
-//        FOREIGN KEY (nm_surr_key)
-//        REFERENCES ods_owner.names(nm_surr_key) ON DELETE SET NULL ON UPDATE CASCADE,
-//
-//        CONSTRAINT addr_surr_key_fk
-//        FOREIGN KEY (addr_surr_key)
-//        REFERENCES ods_owner.addresses(addr_surr_key) ON DELETE SET NULL ON UPDATE CASCADE
-//        );

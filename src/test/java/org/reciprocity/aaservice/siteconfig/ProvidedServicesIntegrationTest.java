@@ -5,7 +5,7 @@ import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.reciprocity.aaservice.repository.siteconfig.ServiceConfigRepository;
-import org.reciprocity.aaservice.repository.siteconfig.ServiceEntity;
+import org.reciprocity.aaservice.repository.siteconfig.Services;
 import org.reciprocity.aaservice.util.MCRPostgresqlContainer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -26,11 +26,11 @@ public class ProvidedServicesIntegrationTest {
     @Test
     @Transactional
     public void saveToDB() {
-        ServiceEntity serviceEntity = new ServiceEntity();
-        serviceEntity.setName("food-service");
-        serviceEntity.setCategory("food");
-        serviceEntity.setDescription("Just food");
-        ServiceEntity response = serviceConfigRepository.save(serviceEntity);
+        Services services = new Services();
+        services.setName("food-service");
+        services.setCategory("food");
+        services.setDescription("Just food");
+        Services response = serviceConfigRepository.save(services);
 
         Assert.assertNotNull(response);
     }

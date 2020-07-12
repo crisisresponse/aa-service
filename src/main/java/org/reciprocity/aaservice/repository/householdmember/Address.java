@@ -22,6 +22,9 @@ public class Address {
     @Column(name="street_addr", nullable = false)
     public String streetAddress;
 
+    @Column(name="street_line_2")
+    public String streetAddressLineTwo;
+
     @Column(name="addr_city", nullable = false)
     public String city;
 

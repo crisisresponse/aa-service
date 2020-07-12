@@ -14,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class FormMapperTest {
     private FormMapper mapper
             = Mappers.getMapper(FormMapper.class);
+
     @Test
     public void testNameToNameEntityMapping() {
         MemberName name = new MemberName();

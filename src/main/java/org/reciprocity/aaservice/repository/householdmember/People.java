@@ -20,7 +20,7 @@ public class People {
     @Id
     @Setter(AccessLevel.NONE)
     @Column(name = "member_key", updatable = false, nullable = false)
-    private UUID memberId;
+    private UUID memberKey;
 
     @MapsId
     @OneToOne
@@ -48,32 +48,26 @@ public class People {
     @Column(name="hh_size")
     private Integer householdSize;
 
-//    //If you are the primary contact than this column is null
-//    @Column(name="hh_primary_contact", insertable = false, updatable = false)
-//    private UUID primaryContact;
-
-    //@Column(name="hh_role")
-    //private String householdRole;
+    @Column(name="hh_members")
+    @ElementCollection(targetClass = UUID.class)
+    private List<UUID> householdMembers;
 
     @OneToOne
     @JoinColumn(name = "hh_primary_contact", referencedColumnName = "member_key")
     public People primaryContact;
 
     @OneToOne
-    @JoinColumn(name="aid_assistant", referencedColumnName = "member_key")
-    private Member aidAssistant;
+    @JoinColumn(name="care_coordinator", referencedColumnName = "member_key")
+    private Member careCoordinator;
 
-    @Column(columnDefinition="VARCHAR(4)")
+    @Column(columnDefinition="VARCHAR(10)")
     private String grade;
 
+    @Column(columnDefinition="VARCHAR(75)")
     private String school;
 
     //This is only for volunteers
     private String qualifications;
-
-    //may not get used
-    @Column(name="field_of_work")
-    private String fieldOfWork;
 
     @Column(name="created_date")
     private LocalDate createdDate;

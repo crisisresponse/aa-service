@@ -2,7 +2,7 @@ package org.reciprocity.aaservice.siteconfig.providedservice;
 
 import org.reciprocity.aaservice.model.ProvidedService;
 import org.reciprocity.aaservice.model.ProvidedServiceRequest;
-import org.reciprocity.aaservice.repository.siteconfig.ServiceEntity;
+import org.reciprocity.aaservice.repository.siteconfig.Services;
 import org.reciprocity.aaservice.repository.siteconfig.ServiceConfigRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +26,7 @@ public class ProvidedServicesServiceImpl implements ProvidedServicesService {
 
     @Override
     public List<ProvidedService> retrieveAllProvidedServices() {
-        List<ServiceEntity> results =  serviceConfigRepository.findAll();
+        List<Services> results =  serviceConfigRepository.findAll();
         return results.stream()
                 .map(availableService ->
                         SITE_CONFIG_MAPPER.availServiceMapToReturnProvidedService(availableService))
@@ -35,7 +35,7 @@ public class ProvidedServicesServiceImpl implements ProvidedServicesService {
 
     @Override
     public ProvidedService retrieveProvidedService(Long id) {
-        Optional<ServiceEntity> result =  serviceConfigRepository.findById(id);
+        Optional<Services> result =  serviceConfigRepository.findById(id);
         if(result.isPresent()) {
            return SITE_CONFIG_MAPPER.availServiceMapToReturnProvidedService(result.get());
         }
@@ -44,7 +44,7 @@ public class ProvidedServicesServiceImpl implements ProvidedServicesService {
 
     @Override
     public void saveNewProvidedService(ProvidedServiceRequest request) {
-        List<ServiceEntity> serviceEntities = request.getProvidedService()
+        List<Services> serviceEntities = request.getProvidedService()
                 .stream()
                 .map(SITE_CONFIG_MAPPER::providedServicesMapToEntity)
                 .collect(Collectors.toList());
@@ -54,7 +54,7 @@ public class ProvidedServicesServiceImpl implements ProvidedServicesService {
 
     @Override
     public void updateProvidedService(ProvidedServiceRequest request) {
-        List<ServiceEntity> serviceEntities = request.getProvidedService()
+        List<Services> serviceEntities = request.getProvidedService()
                 .stream()
                 .map(SITE_CONFIG_MAPPER::providedServicesMapToEntity)
                 .collect(Collectors.toList());

@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name="services")
 @Getter @Setter
-public class ServiceEntity {
+public class Services {
 
     @Id
     @GeneratedValue
@@ -21,6 +21,10 @@ public class ServiceEntity {
 
     @Column(name="srvc_desc")
     private String description;
+
+    //enum
+    @Column(name="srvc_type")
+    private String type;
 
     //enum
     @Column(name="srvc_category")

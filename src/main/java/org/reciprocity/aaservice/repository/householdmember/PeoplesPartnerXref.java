@@ -33,6 +33,9 @@ public class PeoplesPartnerXref implements Serializable {
     @Column(name="primary_partner_ind", nullable = false)
     public String primaryPartnerFlag;
 
+    @Column(name="exclusive_partner_ind", nullable = false)
+    public String exclusivePartnerFlag;
+
     @Column(name="created_date")
     public LocalDate createdDate;
 
